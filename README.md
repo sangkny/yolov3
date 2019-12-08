@@ -1,3 +1,10 @@
+##### * This repo has been come from the below ref. In addition, more specific training and test example has been added.
+More requirements for training data visualization as as tensorboard, 
+* tensorflow(-gpu for your gpu) > 1.3 as of 2019/12/08
+* absl (from the module by conda install abs1-py)   
+
+
+
 <table style="width:100%">
   <tr>
     <td>

@@ -401,9 +401,9 @@ def prebias():
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--epochs', type=int, default=273)  # 500200 batches at bs 16, 117263 images = 273 epochs
-    parser.add_argument('--batch-size', type=int, default=32)  # effective bs = batch_size * accumulate = 16 * 4 = 64
-    parser.add_argument('--accumulate', type=int, default=2, help='batches to accumulate before optimizing')
+    parser.add_argument('--epochs', type=int, default=20)  # 273:  500200 batches at bs 16, 117263 images = 273 epochs
+    parser.add_argument('--batch-size', type=int, default=1)  # 64 : effective bs = batch_size * accumulate = 16 * 4 = 64
+    parser.add_argument('--accumulate', type=int, default=1, help='batches to accumulate before optimizing') # 4:
     parser.add_argument('--cfg', type=str, default='cfg/yolov3-spp.cfg', help='cfg file path')
     parser.add_argument('--data', type=str, default='data/coco.data', help='*.data file path')
     parser.add_argument('--multi-scale', action='store_true', help='adjust (67% - 150%) img_size every 10 batches')
@@ -425,7 +425,16 @@ if __name__ == '__main__':
     parser.add_argument('--adam', action='store_true', help='use adam optimizer')
     parser.add_argument('--var', type=float, help='debug variable')
     opt = parser.parse_args()
+
+    # temp settings
+    opt.weights = 'weights/darknet53.conv.74'
+    opt.cfg = 'cfg/snowman-yolov3.cfg'
+    opt.data = 'data/snowman_1cls.data'
+
     opt.weights = last if opt.resume else opt.weights
+
+
+
     print(opt)
     device = torch_utils.select_device(opt.device, apex=mixed_precision, batch_size=opt.batch_size)
     if device.type == 'cpu':
