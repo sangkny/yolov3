@@ -1,5 +1,12 @@
-##### * This repo has been come from the below ref. In addition, more specific training and test example has been added.
-More requirements for training data visualization as as tensorboard, 
+##### This repo has been come from the below ref. 
+- In addition, more specific training and test example has been added.
+
+##### updated
+- SNOwman has been trained with this repo
+- ITMS has been trained with this repo
+
+
+More requirements for training data visualization as tensorboard, 
 * tensorflow(-gpu for your gpu) > 1.3 as of 2019/12/08
 * absl (from the module by conda install abs1-py)   
 
